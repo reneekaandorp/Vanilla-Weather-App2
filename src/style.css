@@ -28,6 +28,18 @@ li {
   margin-bottom: 30px;
 }
 
-#today-weather {
-  margin-bottom: 30px;
+.weather-app-wrapper {
+  max-width: 600px;
+  margin: 30px auto;
+}
+
+.temperature strong {
+  font-size: 50px;
+  line-height: 1;
+  margin-left: 15px;
+}
+
+.temperature .units {
+  position: relative;
+  margin-left: 5px;
 }
