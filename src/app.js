@@ -36,11 +36,13 @@ function displayTemperature(response) {
   windElement.innerHTML = Math.round(response.data.wind.speed);
   let dateElement = document.querySelector("#date");
   dateElement.innerHTML = formatDate(response.data.time * 1000);
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute("src", `${response.data.condition.icon_url}`);
   console.log(response);
 }
 
 let apiKey = "79t19ca06b3618febf143dc04f0o86be";
 let apiUrl =
-  "https://api.shecodes.io/weather/v1/current?query=Diever&key=79t19ca06b3618febf143dc04f0o86be&units=metric";
+  "https://api.shecodes.io/weather/v1/current?query=Sydney&key=79t19ca06b3618febf143dc04f0o86be&units=metric";
 
 axios.get(apiUrl).then(displayTemperature);
