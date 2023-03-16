@@ -53,3 +53,13 @@ li:first-letter {
   position: relative;
   margin-left: 5px;
 }
+
+.temperature .active {
+  text-decoration: none;
+  color: black;
+  cursor: default;
+}
+
+.temperature .active:hover {
+  text-decoration: none;
+}
