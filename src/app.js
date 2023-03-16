@@ -2,7 +2,7 @@ function formatDate(timestamp) {
   let date = new Date(timestamp);
   let hours = date.getHours();
   if (hours < 10) {
-    hours = `0{hours}`;
+    hours = `0${hours}`;
   }
   let minutes = date.getMinutes();
   if (minutes < 10) {
@@ -38,11 +38,21 @@ function displayTemperature(response) {
   dateElement.innerHTML = formatDate(response.data.time * 1000);
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute("src", `${response.data.condition.icon_url}`);
-  console.log(response);
 }
 
-let apiKey = "79t19ca06b3618febf143dc04f0o86be";
-let apiUrl =
-  "https://api.shecodes.io/weather/v1/current?query=Sydney&key=79t19ca06b3618febf143dc04f0o86be&units=metric";
+function search(city) {
+  let apiKey = "79t19ca06b3618febf143dc04f0o86be";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=79t19ca06b3618febf143dc04f0o86be&units=metric`;
+  axios.get(apiUrl).then(displayTemperature);
+}
 
-axios.get(apiUrl).then(displayTemperature);
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input");
+  search(cityInputElement.value);
+}
+
+search("Diever");
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
