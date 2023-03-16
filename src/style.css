@@ -63,3 +63,11 @@ li:first-letter {
 .temperature .active:hover {
   text-decoration: none;
 }
+
+.weather-forecast-date {
+  text-align: center;
+}
+
+.weather-forecast-temperature-min {
+  opacity: 0.7;
+}
