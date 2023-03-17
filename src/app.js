@@ -24,7 +24,8 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
 
   let days = ["Fri", "Sat", "Sun", "Mon"];
@@ -55,6 +56,13 @@ function displayForecast() {
   forecastElement.innerHTML = forecastHTML;
 }
 
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiForecastUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=79t19ca06b3618febf143dc04f0o86be&units=metric`;
+  axios.get(apiForecastUrl).then(displayForecast);
+  console.log(apiForecastUrl);
+}
+
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(response.data.temperature.current);
@@ -72,6 +80,8 @@ function displayTemperature(response) {
   iconElement.setAttribute("src", `${response.data.condition.icon_url}`);
 
   celsiusTemperature = response.data.temperature.current;
+
+  getForecast(response.data.coordinates);
 }
 
 function search(city) {
@@ -115,4 +125,3 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 search("Diever");
-displayForecast();
