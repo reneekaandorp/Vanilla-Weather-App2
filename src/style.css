@@ -17,6 +17,10 @@ h1 {
   margin-bottom: 0;
 }
 
+h2 {
+  text-align: center;
+}
+
 ul {
   margin: 0;
   padding: 0;
